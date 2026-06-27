@@ -1,0 +1,236 @@
+/* About Us Page Styles */
+.pageContainer {
+  padding: 60px 0 100px 0;
+  background: var(--bg-base);
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 64px;
+}
+
+.pretitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.title {
+  font-size: 44px;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--text-muted);
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+/* Story & Manifesto Split Grid */
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-family: Georgia, 'Playfair Display', 'Times New Roman', serif;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.paragraph {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.milestoneCard {
+  background: rgba(255, 153, 0, 0.025);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 24px;
+  border-radius: 16px;
+  margin-top: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.milestoneCard h3 {
+  font-size: 18px;
+  color: var(--text-gold);
+  font-family: var(--font-title);
+  margin-bottom: 6px;
+}
+
+.milestoneCard p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Manifesto section styles */
+.manifestoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.manifestoList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.manifestoItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.itemNumber {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 800;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+
+.manifestoItem strong {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.manifestoItem p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Call to Action Banner */
+.ctaBanner {
+  position: relative;
+  margin-top: 96px;
+  background: linear-gradient(135deg, rgba(18, 17, 22, 0.75) 0%, rgba(10, 10, 12, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 24px;
+  padding: 48px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.05),
+              0 0 50px rgba(212, 175, 55, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.ctaGlow {
+  position: absolute;
+  top: -120px;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 75%);
+  pointer-events: none;
+}
+
+.ctaContent {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+
+.ctaContent h2 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.ctaContent p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ctaArrow {
+  font-size: 14px;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Responsiveness overrides */
+@media (max-width: 900px) {
+  .splitGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 34px;
+  }
+  .header {
+    margin-bottom: 40px;
+  }
+  .sectionTitle {
+    font-size: 24px;
+  }
+  .ctaBanner {
+    padding: 32px 24px;
+  }
+  .ctaContent h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .ctaContent h2 {
+    font-size: 22px;
+  }
+  .ctaContent p {
+    font-size: 13.5px;
+  }
+}

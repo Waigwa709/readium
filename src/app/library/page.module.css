@@ -1,0 +1,379 @@
+/* Library Page Styles */
+.libraryHeader {
+  margin-bottom: 48px;
+}
+
+.pretitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.title {
+  font-size: 40px;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/* Sidebar & Main Layout Split */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 96px;
+}
+
+.sidebarSection {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebarTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-gold);
+  margin-bottom: 16px;
+  font-family: var(--font-title);
+}
+
+.categoryList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryBtn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.categoryBtn:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
+
+.activeCategory {
+  background: rgba(212, 175, 55, 0.09) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  color: var(--text-gold) !important;
+  font-weight: 600;
+}
+
+.categoryCount {
+  font-size: 11px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.activeCategory .categoryCount {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--text-gold);
+}
+
+.sidebarBanner {
+  background: var(--dark-gold-gradient);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebarBanner h4 {
+  font-size: 15px;
+  font-family: var(--font-title);
+  color: var(--text-gold);
+  margin-bottom: 6px;
+}
+
+.sidebarBanner p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Right Panel Catalog Area */
+.catalogMain {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.controlsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Inline Search form styling */
+.inlineSearchForm {
+  display: flex;
+  flex: 1;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 30px;
+  padding: 3px;
+  transition: var(--transition-smooth);
+}
+
+.inlineSearchForm:focus-within {
+  border-color: var(--primary-gold);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.inlineSearchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 13.5px;
+  color: #fff;
+  padding: 0 16px;
+  height: 38px;
+}
+
+.inlineSearchInput:focus {
+  outline: none;
+}
+
+.inlineSearchBtn {
+  background: var(--gold-gradient);
+  color: #0c0a0f;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 0 20px;
+  height: 38px;
+  border-radius: 19px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.inlineSearchBtn:hover {
+  background: var(--gold-gradient-hover);
+}
+
+/* Sort Tab controls */
+.sortTabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.sortTabBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sortTabBtn:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  color: var(--text-gold);
+}
+
+.activeSortTab {
+  background: rgba(212, 175, 55, 0.1) !important;
+  border-color: var(--primary-gold) !important;
+  color: var(--text-gold) !important;
+  font-weight: 600;
+}
+
+/* Applied filter status line */
+.filterStatusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+.filterBadges {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBadge {
+  font-size: 12px;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  color: var(--text-gold);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterBadge button {
+  background: transparent;
+  border: none;
+  color: var(--text-gold);
+  cursor: pointer;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearAllFiltersBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.clearAllFiltersBtn:hover {
+  color: var(--text-gold);
+}
+
+/* Catalog book grid (180px cards) */
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 28px;
+}
+
+/* No results view */
+.noResults {
+  text-align: center;
+  padding: 80px 24px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noResultsIcon {
+  font-size: 40px;
+  margin-bottom: 14px;
+  opacity: 0.5;
+}
+
+.noResults h3 {
+  font-size: 18px;
+  font-family: var(--font-title);
+  margin-bottom: 8px;
+}
+
+.noResults p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .libraryHeader {
+    margin-bottom: 32px;
+  }
+  .title {
+    font-size: 32px;
+    text-align: left;
+  }
+  .subtitle {
+    text-align: left;
+  }
+  .controlsBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .inlineSearchForm {
+    width: 100%;
+    max-width: 100%;
+  }
+  .sortTabs {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 26px;
+  }
+  .subtitle {
+    font-size: 13.5px;
+  }
+  .booksGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+}
