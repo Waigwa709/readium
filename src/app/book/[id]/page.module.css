@@ -201,9 +201,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
+  background: #25d366;
+  border: 1px solid #20ba5a;
+  color: #ffffff;
   font-family: var(--font-title);
   font-weight: 700;
   font-size: 14px;
@@ -211,13 +211,15 @@
   border-radius: 8px;
   cursor: pointer;
   transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
 }
 
 .btnBuy:hover {
-  border-color: rgba(212, 175, 55, 0.4);
-  background: rgba(212, 175, 55, 0.04);
-  color: var(--text-gold);
+  background: #20ba5a;
+  border-color: #1cab4f;
+  color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
 }
 
 .btnIcon {

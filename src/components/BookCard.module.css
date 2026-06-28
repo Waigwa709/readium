@@ -58,3 +58,24 @@
   font-size: 14px;
   color: var(--text-gold);
 }
+
+.ctaButton {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--gold-gradient);
+  color: #000000;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.15);
+  font-family: var(--font-title);
+  letter-spacing: 0.5px;
+}
+
+.card:hover .ctaButton {
+  background: #ffffff;
+  box-shadow: 0 6px 14px rgba(255, 255, 255, 0.2);
+}

@@ -93,9 +93,11 @@ export default function PricingPage() {
       {/* Page Header */}
       <section className={`${styles.header} container`}>
         <span className={styles.pretitle}>INVEST IN MINDSET</span>
-        <h1 className={styles.title}>Flexible Reading Packages</h1>
+        <h1 className={styles.title}>Choose Your Reading Velocity
+
+        </h1>
         <p className={styles.subtitle}>
-          Ditch the pixels. Get physical copies delivered directly to you. Upgrade, downgrade, or cancel at any time.
+          Ditch the pixels. Get physical copies delivered directly to you. Upgrade, downgrade, or cancel at any time. Subscribe to a Reading Lifestyle, Not Just Books.
         </p>
       </section>
 
@@ -103,13 +105,13 @@ export default function PricingPage() {
       <section className="container">
         <div className={styles.grid}>
           {plans.map((plan) => (
-            <div 
-              key={plan.id} 
+            <div
+              key={plan.id}
               className={`${styles.card} ${plan.isPopular ? styles.popularCard : ''}`}
               style={{ '--plan-color': plan.color }}
             >
               {plan.isPopular && <div className={styles.popularBadge}>Most Popular</div>}
-              
+
               <div className={styles.cardHeader}>
                 <span className={styles.planBadge}>{plan.badge}</span>
                 <h3 className={styles.planName}>{plan.name}</h3>
@@ -167,7 +169,7 @@ export default function PricingPage() {
                 ))}
               </ul>
 
-              <button 
+              <button
                 onClick={() => handleSubscribe(plan)}
                 className={`btn-gold ${styles.subscribeBtn}`}
                 style={{ background: plan.isPopular ? 'var(--gold-gradient)' : 'transparent', color: plan.isPopular ? '#000' : '#fff', border: plan.isPopular ? 'none' : '1px solid var(--border-color)' }}
@@ -317,8 +319,8 @@ export default function PricingPage() {
               <div className={styles.paystackLogo}>
                 <span className={styles.pstkGreen}>pay</span>stack
               </div>
-              <button 
-                className={styles.closeBtn} 
+              <button
+                className={styles.closeBtn}
                 onClick={() => setCheckoutStep('select')}
               >
                 ✕
@@ -340,8 +342,8 @@ export default function PricingPage() {
 
                 {/* Tabs */}
                 <div className={styles.tabHeader}>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className={`${styles.tabBtn} ${paymentMethod === 'card' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('card')}
                   >
@@ -350,8 +352,8 @@ export default function PricingPage() {
                       Card
                     </span>
                   </button>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className={`${styles.tabBtn} ${paymentMethod === 'bank' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('bank')}
                   >
@@ -360,8 +362,8 @@ export default function PricingPage() {
                       Bank
                     </span>
                   </button>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className={`${styles.tabBtn} ${paymentMethod === 'ussd' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('ussd')}
                   >
@@ -464,8 +466,8 @@ export default function PricingPage() {
                 </div>
                 <h3>Subscription Successful!</h3>
                 <p>Welcome to the Readium Lifestyle. An email receipt has been dispatched. Your welcome package and first books will arrive shortly.</p>
-                <button 
-                  className="btn-gold" 
+                <button
+                  className="btn-gold"
                   onClick={() => setCheckoutStep('select')}
                   style={{ marginTop: '24px' }}
                 >

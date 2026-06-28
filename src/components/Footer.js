@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Bottom copyright line */}
         <div className={styles.bottomBar}>
-          <p>© {new Date().getFullYear()} Readium SaaS by Kendrick Designs. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Readium by Elon Designs. All rights reserved.</p>
 
         </div>
       </div>
