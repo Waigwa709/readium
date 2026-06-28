@@ -20,11 +20,35 @@ export default function Footer() {
 
           {/* Quick links */}
           <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>SaaS Subscriptions</h4>
+            <h4 className={styles.colTitle}> Subscription Packages</h4>
             <ul className={styles.linksList}>
-              <li><Link href="/pricing">📖 Bookmark Plan</Link></li>
-              <li><Link href="/pricing">📚 Chapter Plan</Link></li>
-              <li><Link href="/pricing">🏛️ Library Plan</Link></li>
+              <li>
+                <Link href="/pricing" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', flexShrink: 0 }}>
+                    <polyline points="7 13 12 18 22 8"></polyline>
+                    <polyline points="1 13 6 18 16 8"></polyline>
+                  </svg>
+                  Bookmark Plan
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', flexShrink: 0 }}>
+                    <polyline points="7 13 12 18 22 8"></polyline>
+                    <polyline points="1 13 6 18 16 8"></polyline>
+                  </svg>
+                  Chapter Plan
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', flexShrink: 0 }}>
+                    <polyline points="7 13 12 18 22 8"></polyline>
+                    <polyline points="1 13 6 18 16 8"></polyline>
+                  </svg>
+                  Library Plan
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -54,10 +78,7 @@ export default function Footer() {
         {/* Bottom copyright line */}
         <div className={styles.bottomBar}>
           <p>© {new Date().getFullYear()} Readium SaaS by Kendrick Designs. All rights reserved.</p>
-          <div className={styles.legalLinks}>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-          </div>
+
         </div>
       </div>
     </footer>

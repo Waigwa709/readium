@@ -10,7 +10,7 @@ export default function PricingPage() {
   const plans = [
     {
       id: 'bookmark',
-      name: '📖 Bookmark Plan',
+      name: 'Bookmark Plan',
       tagline: 'For casual readers starting their physical journey',
       price: 'KSh 2,500',
       period: 'month',
@@ -19,7 +19,7 @@ export default function PricingPage() {
       booksPerYear: '3 physical books / year',
       activeBooks: '1 active borrowed book at a time',
       loanPeriod: '14-day borrowing period',
-      renewals: '❌ No renewals',
+      renewals: 'No renewals',
       perks: [
         'Welcome bookmark gift',
         'Digital reading profile & history',
@@ -30,7 +30,7 @@ export default function PricingPage() {
     },
     {
       id: 'chapter',
-      name: '📚 Chapter Plan',
+      name: 'Chapter Plan',
       tagline: 'For consistent readers building a reading habit',
       price: 'KSh 3,500',
       period: 'month',
@@ -40,7 +40,7 @@ export default function PricingPage() {
       booksPerYear: '6 physical books / year',
       activeBooks: '2 active borrowed books at a time',
       loanPeriod: '21-day borrowing period',
-      renewals: '✓ 1 renewal allowed',
+      renewals: '1 renewal allowed',
       perks: [
         'Premium bookmark collection',
         'Physical reading journal + protective sleeve',
@@ -53,7 +53,7 @@ export default function PricingPage() {
     },
     {
       id: 'library',
-      name: '🏛️ Library Plan',
+      name: 'Library Plan',
       tagline: 'For serious readers, families, and organizations',
       price: 'KSh 4,500',
       period: 'month',
@@ -62,7 +62,7 @@ export default function PricingPage() {
       booksPerYear: 'Unlimited borrowing (Fair use applies)',
       activeBooks: '5 active borrowed books at a time',
       loanPeriod: '30-day borrowing period',
-      renewals: '✓ Unlimited renewals',
+      renewals: 'Unlimited renewals',
       perks: [
         'New releases & bestsellers first',
         'Monthly surprise book subscription box',
@@ -122,20 +122,35 @@ export default function PricingPage() {
 
               <div className={styles.cardSpecs}>
                 <div className={styles.specItem}>
-                  <span className={styles.specIcon}>📚</span>
+                  <span className={styles.specIcon}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                  </span>
                   <span>{plan.booksPerYear}</span>
                 </div>
                 <div className={styles.specItem}>
-                  <span className={styles.specIcon}>⏱️</span>
+                  <span className={styles.specIcon}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </span>
                   <span>{plan.activeBooks}</span>
                 </div>
                 <div className={styles.specItem}>
-                  <span className={styles.specIcon}>📅</span>
+                  <span className={styles.specIcon}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  </span>
                   <span>{plan.loanPeriod}</span>
                 </div>
                 <div className={styles.specItem}>
-                  <span className={styles.specIcon}>🔄</span>
-                  <span>{plan.renewals}</span>
+                  <span className={styles.specIcon}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                  </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    {plan.id === 'bookmark' ? (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    ) : (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    )}
+                    {plan.renewals}
+                  </span>
                 </div>
               </div>
 
@@ -144,7 +159,9 @@ export default function PricingPage() {
               <ul className={styles.perksList}>
                 {plan.perks.map((perk, i) => (
                   <li key={i}>
-                    <span className={styles.checkIcon}>✓</span>
+                    <span className={styles.checkIcon}>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
                     <span>{perk}</span>
                   </li>
                 ))}
@@ -196,15 +213,20 @@ export default function PricingPage() {
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Renewals</td>
-                <td>❌ None</td>
+                <td>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    None
+                  </span>
+                </td>
                 <td>1 renewal</td>
                 <td className={styles.highlightText}>Unlimited</td>
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Wishlist</td>
-                <td>✓</td>
-                <td>✓</td>
-                <td>✓</td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><polyline points="20 6 9 17 4 12"></polyline></svg></td>
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Book Recommendations</td>
@@ -232,25 +254,52 @@ export default function PricingPage() {
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Members-only Book Club</td>
-                <td>❌ None</td>
-                <td>✓ Members Club</td>
+                <td>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    None
+                  </span>
+                </td>
+                <td>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Members Club
+                  </span>
+                </td>
                 <td className={styles.highlightText}>VIP Events & Author Chats</td>
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Priority Waiting Lists</td>
-                <td>❌ None</td>
-                <td>✓</td>
-                <td>✓ First Priority</td>
+                <td>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    None
+                  </span>
+                </td>
+                <td>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </td>
+                <td className={styles.highlightText}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    First Priority
+                  </span>
+                </td>
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Monthly Surprise Box</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td className={styles.highlightText}>✓ Included</td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
+                <td className={styles.highlightText}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Included
+                  </span>
+                </td>
               </tr>
               <tr>
                 <td className={styles.alignLeft}>Family accounts</td>
-                <td>❌</td>
+                <td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block' }}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
                 <td>1 member</td>
                 <td>5 members</td>
               </tr>
@@ -296,21 +345,30 @@ export default function PricingPage() {
                     className={`${styles.tabBtn} ${paymentMethod === 'card' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('card')}
                   >
-                    💳 Card
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                      Card
+                    </span>
                   </button>
                   <button 
                     type="button" 
                     className={`${styles.tabBtn} ${paymentMethod === 'bank' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('bank')}
                   >
-                    🏦 Bank Transfer
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 22v-4h18v4H3zM12 2L2 7h20L12 2zM5 17v-7h2v7H5zm5 0v-7h2v7h-2zm5 0v-7h2v7h-2z"></path></svg>
+                      Bank
+                    </span>
                   </button>
                   <button 
                     type="button" 
                     className={`${styles.tabBtn} ${paymentMethod === 'ussd' ? styles.activeTab : ''}`}
                     onClick={() => setPaymentMethod('ussd')}
                   >
-                    🔢 USSD
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line><line x1="9" y1="15" x2="9.01" y2="15"></line><line x1="15" y1="15" x2="15.01" y2="15"></line></svg>
+                      USSD
+                    </span>
                   </button>
                 </div>
 
@@ -382,7 +440,10 @@ export default function PricingPage() {
                 <button type="submit" className={`btn-gold ${styles.payBtn}`}>
                   Pay {selectedPlan.price}
                 </button>
-                <p className={styles.securedText}>🔒 Secured by Paystack</p>
+                <p className={styles.securedText}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px', verticalAlign: 'middle', opacity: 0.8 }}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  Secured by Paystack
+                </p>
               </form>
             )}
 
@@ -398,7 +459,9 @@ export default function PricingPage() {
             {/* Success State */}
             {checkoutStep === 'success' && (
               <div className={styles.successContent}>
-                <div className={styles.successIcon}>✓</div>
+                <div className={styles.successIcon}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: 'auto' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
                 <h3>Subscription Successful!</h3>
                 <p>Welcome to the Readium Lifestyle. An email receipt has been dispatched. Your welcome package and first books will arrive shortly.</p>
                 <button 

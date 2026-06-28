@@ -102,7 +102,10 @@ function LibraryContent() {
                   onClick={() => handleCategorySelect('All')}
                   className={`${styles.categoryBtn} ${selectedCategory === 'All' ? styles.activeCategory : ''}`}
                 >
-                  <span>🌐 All Categories</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    All Categories
+                  </span>
                   <span className={styles.categoryCount}>{totalCount}</span>
                 </button>
               </li>
@@ -111,7 +114,10 @@ function LibraryContent() {
                   onClick={() => handleCategorySelect('Technology')}
                   className={`${styles.categoryBtn} ${selectedCategory === 'Technology' ? styles.activeCategory : ''}`}
                 >
-                  <span>💻 Technology</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    Technology
+                  </span>
                   <span className={styles.categoryCount}>{techCount}</span>
                 </button>
               </li>
@@ -120,7 +126,10 @@ function LibraryContent() {
                   onClick={() => handleCategorySelect('Business')}
                   className={`${styles.categoryBtn} ${selectedCategory === 'Business' ? styles.activeCategory : ''}`}
                 >
-                  <span>📈 Business & Wealth</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Business & Wealth
+                  </span>
                   <span className={styles.categoryCount}>{bizCount}</span>
                 </button>
               </li>
@@ -129,7 +138,10 @@ function LibraryContent() {
                   onClick={() => handleCategorySelect('Personal Development')}
                   className={`${styles.categoryBtn} ${selectedCategory === 'Personal Development' ? styles.activeCategory : ''}`}
                 >
-                  <span>🧠 Mindset & Growth</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    Mindset & Growth
+                  </span>
                   <span className={styles.categoryCount}>{pdCount}</span>
                 </button>
               </li>
@@ -223,7 +235,12 @@ function LibraryContent() {
             </div>
           ) : (
             <div className={styles.noResults}>
-              <div className={styles.noResultsIcon}>📚</div>
+              <div className={styles.noResultsIcon}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }}>
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+              </div>
               <h3>No match found in current filters</h3>
               <p>Try modifying your category selection or clearing the search text.</p>
               <button onClick={handleResetFilters} className="btn-gold" style={{ marginTop: '16px' }}>

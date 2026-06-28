@@ -4,96 +4,132 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export default function AboutPage() {
+  const manifestoItems = [
+    {
+      number: "01",
+      title: "Curation Over Noise",
+      description: "We eliminate selection fatigue. Our catalog is strictly vetted by industry leaders so every loan delivers high-value, actionable insights."
+    },
+    {
+      number: "02",
+      title: "Tactile Luxury",
+      description: "A physical book is a luxury experience. Every book is kept in pristine condition and includes custom design bookmarks to enhance your bookshelf."
+    },
+    {
+      number: "03",
+      title: "Circular Sharing",
+      description: "Sharing is sustainable. By establishing active local borrowing loops, we reduce printing resource waste and foster collaborative knowledge sharing."
+    },
+    {
+      number: "04",
+      title: "Digital Frictionlessness",
+      description: "Experience physical reading with digital convenience. Search, check availability, read synopses, and coordinate direct doorstep delivery with a simple click."
+    }
+  ];
+
   return (
     <div className={styles.pageContainer}>
-      <div className="container">
-        
-        {/* About Header */}
-        <div className={styles.header}>
+      
+      {/* 1. Ambient Hero Header */}
+      <section className={styles.aboutHero}>
+        <div className="container">
           <span className={styles.pretitle}>OUR MISSION & VISION</span>
-          <h1 className={styles.title}>Restoring the physical reading lifestyle.</h1>
-          <p className={styles.subtitle}>
-            In a hyper-digital world of endless notifications, we believe the physical page is the ultimate anchor for focus, contemplation, and learning.
+          <h1 className={styles.heroTitle}>Restoring the physical reading lifestyle.</h1>
+          <p className={styles.heroSubtitle}>
+            In a hyper-digital world of endless notifications, we believe the physical page is the ultimate anchor for focus, deep comprehension, and learning.
           </p>
         </div>
+      </section>
 
-        {/* Story split layout */}
-        <div className={styles.splitGrid}>
-          {/* Left Column: Our Story */}
-          <div className={styles.storyContent}>
-            <h2 className={styles.sectionTitle}>The Story of Readium</h2>
-            <p className={styles.paragraph}>
-              Readium was born out of a simple observation: while e-readers and digital audiobooks offer unmatched convenience, they lack the soul, tactile connection, and presence of physical volumes. 
-            </p>
-            <p className={styles.paragraph}>
-              A physical book is more than text; it is an experience. The smell of ink, the grain of paper, the satisfying weight in your hand, and the progress of turning pages are cues that help our brains slow down, focus, and absorb knowledge.
-            </p>
-            <p className={styles.paragraph}>
-              However, buying books repeatedly can lead to clutter, and local libraries are often out of stock. We decided to bridge this gap by building **Readium**: a premium, door-to-door book lending SaaS that combines the tactile touch of physical books with digital on-demand convenience.
-            </p>
-
-            <div className={styles.milestoneCard}>
-              <h3>54 Curated Volumes</h3>
-              <p>We do not have millions of books. We curate exactly 54 high-caliber volumes across Technology, Business, and Mindset to guarantee your reading time is spent only on the best ideas.</p>
-            </div>
+      <div className="container">
+        {/* 2. Interactive Statistics Row */}
+        <section className={styles.statsGrid}>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>54</span>
+            <span className={styles.statLabel}>Vetted Volumes</span>
+            <span className={styles.statDesc}>No clutter. Only highly reviewed books across tech, business, and mindset.</span>
           </div>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>100%</span>
+            <span className={styles.statLabel}>Tactile Quality</span>
+            <span className={styles.statDesc}>Pristine books complete with premium bookmarks delivered to your hands.</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>Seamless</span>
+            <span className={styles.statLabel}>Doorstep Logistics</span>
+            <span className={styles.statDesc}>Free local deliveries and on-demand pickups scheduled directly around your timing.</span>
+          </div>
+        </section>
 
-          {/* Right Column: Values / Manifesto */}
-          <div className={styles.manifestoCol}>
-            <h2 className={styles.sectionTitle}>Our Curation Manifesto</h2>
-            
-            <div className={styles.manifestoList}>
-              <div className={styles.manifestoItem}>
-                <span className={styles.itemNumber}>01</span>
-                <div>
-                  <strong>Curation Over Noise</strong>
-                  <p>We eliminate selection fatigue. Our catalog is strictly vetted by industry leaders so every loan delivers high-value takeaways.</p>
-                </div>
-              </div>
+        {/* 3. Narrative & Signature Quote Section */}
+        <section className={styles.storySection}>
+          <div className={styles.storyGrid}>
+            <div className={styles.storyBody}>
+              <span className={styles.pretitle}>THE NARRATIVE</span>
+              <h2>The Story of Readium</h2>
+              <p className={styles.paragraph}>
+                Readium was born out of a simple observation: while e-readers and digital audiobooks offer convenience, they lack the tactile connection, focus, and permanence of physical books. 
+              </p>
+              <p className={styles.paragraph}>
+                The smell of ink, the texture of paper, the satisfying weight in your hand, and the progressive turn of pages are critical cues that help our brains slow down, focus, and retain knowledge.
+              </p>
+              <p className={styles.paragraph}>
+                But purchasing every book leads to clutter, and public libraries are often out of stock. We decided to bridge this gap by building Readium: a premium, door-to-door book lending subscription that combines physical reading with digital on-demand ease.
+              </p>
+            </div>
 
-              <div className={styles.manifestoItem}>
-                <span className={styles.itemNumber}>02</span>
-                <div>
-                  <strong>Tactile Luxury</strong>
-                  <p>Every book is kept in pristine condition. We include custom design bookmarks with every dispatch to enhance your bookshelf collection.</p>
-                </div>
-              </div>
-
-              <div className={styles.manifestoItem}>
-                <span className={styles.itemNumber}>03</span>
-                <div>
-                  <strong>Circular Sharing</strong>
-                  <p>Sharing is sustainable. By establishing active local loops, we reduce printing resource consumption and share physical knowledge hubs.</p>
-                </div>
-              </div>
-
-              <div className={styles.manifestoItem}>
-                <span className={styles.itemNumber}>04</span>
-                <div>
-                  <strong>Digital Frictionlessness</strong>
-                  <p>Use our expandable header search to locate books, check synopses, and coordinate direct logistics via WhatsApp or Paystack subscriptions.</p>
-                </div>
+            <div className={styles.quoteCard}>
+              <span className={styles.quoteIcon}>“</span>
+              <p className={styles.quoteText}>
+                We do not build shelves to collect dust. We create sharing circles that deliver the quiet minutes of uninterrupted focus, the tactile weight of paper in your hands, and the spark of new ideas that change how you build systems.
+              </p>
+              <div className={styles.quoteUser}>
+                <span className={styles.quoteAuthor}>Steve Kendrick</span>
+                <span className={styles.quoteRole}>Founder, Readium SaaS</span>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Bottom Call to Action */}
-        <div className={styles.ctaBanner}>
-          <div className={styles.ctaGlow}></div>
-          <div className={styles.ctaContent}>
-            <h2>Ready to restore your focus?</h2>
-            <p>Select your subscription tier, borrow your first volume, and let us bring the books to your door.</p>
-            <div className={styles.ctaButtons}>
-              <Link href="/pricing" className="btn-gold" style={{ padding: '14px 32px', fontSize: '14px' }}>
-                View Lending Plans <span className={styles.ctaArrow}>→</span>
-              </Link>
-              <Link href="/library" className="btn-outline" style={{ padding: '14px 32px', fontSize: '14px' }}>
-                Browse Curated Catalog
-              </Link>
+        {/* 4. Manifesto Grid Section */}
+        <section className={styles.manifestoSection}>
+          <span className={styles.pretitle}>THE MANIFESTO</span>
+          <h2>Our Core Principles</h2>
+          <p className={styles.sectionSubtitle}>
+            Our principles guide how we curate, manage logistics, and build active reading communities.
+          </p>
+
+          <div className={styles.manifestoGrid}>
+            {manifestoItems.map((item, index) => (
+              <div key={index} className={styles.manifestoCard}>
+                <span className={styles.itemNumber}>{item.number}</span>
+                <div className={styles.manifestoContent}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 5. Bottom Call to Action */}
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaBanner}>
+            <div className={styles.ctaGlow}></div>
+            <div className={styles.ctaContent}>
+              <h2>Ready to restore your focus?</h2>
+              <p>Select your subscription tier, borrow your first volume, and let us bring the books to your door.</p>
+              <div className={styles.ctaButtons}>
+                <Link href="/pricing" className="btn-gold" style={{ padding: '14px 32px', fontSize: '14px' }}>
+                  View Lending Plans <span className={styles.ctaArrow}>→</span>
+                </Link>
+                <Link href="/library" className="btn-outline" style={{ padding: '14px 32px', fontSize: '14px' }}>
+                  Browse Curated Catalog
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
       </div>
     </div>

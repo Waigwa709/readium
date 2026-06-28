@@ -5,14 +5,31 @@
 /* 1. Hero & Search Banner */
 .heroSection {
   position: relative;
-  background-image: linear-gradient(180deg, rgba(10, 10, 12, 0.78) 0%, rgba(10, 10, 12, 0.95) 100%), 
+  background-color: #0c0a08;
+  padding: 80px 0 50px 0;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  background-image: linear-gradient(to bottom, rgba(12, 10, 8, 0.65) 0%, rgba(12, 10, 8, 0.92) 85%, #0c0a08 100%), 
+                    radial-gradient(circle at 50% 35%, rgba(0, 32, 96, 0.25) 0%, transparent 65%), 
                     url('/hero-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 120px 0 80px 0;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroSection > div {
+  position: relative;
+  z-index: 2;
 }
 
 .heroWrapper {
@@ -309,7 +326,7 @@
 .ctaCard {
   position: relative;
   width: 100%;
-  background: linear-gradient(135deg, rgba(18, 17, 22, 0.75) 0%, rgba(10, 10, 12, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(0, 32, 96, 0.18) 0%, rgba(19, 16, 14, 0.98) 100%);
   border: 1px solid rgba(212, 175, 55, 0.18);
   border-radius: 24px;
   padding: 40px 48px;
@@ -331,7 +348,7 @@
   right: -50px;
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 32, 96, 0.15) 0%, transparent 70%);
   pointer-events: none;
   border-radius: 50%;
 }
@@ -377,13 +394,158 @@
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* Best Sellers Section Styles */
+.buybackSectionDesc {
+  margin: -10px 0 32px 0;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+/* Testimonials Section Styles */
+.testimonialsSection {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  background: transparent;
+}
+
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 40px 0;
+  display: flex;
+}
+
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #0c0a08 0%, rgba(12, 10, 8, 0) 100%);
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #0c0a08 0%, rgba(12, 10, 8, 0) 100%);
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+.testimonialCard {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 24px;
+  width: 290px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonialCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.22);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.testimonialStars {
+  color: var(--text-gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.testimonialQuote {
+  font-size: 14.5px;
+  color: var(--text-main);
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.testimonialUser {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.testimonialAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-gold);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.testimonialUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonialUserInfo strong {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.testimonialUserInfo span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
 /* Responsiveness */
+
 @media (max-width: 992px) {
   .heroTitle {
     font-size: 42px;
   }
   .categoryTitle {
     font-size: 28px;
+  }
+  .testimonialCard {
+    width: 270px;
   }
 }
 
@@ -413,6 +575,15 @@
   .categoryTagsRow {
     justify-content: flex-start;
   }
+
+  .buybackSectionDesc {
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  .testimonialCard {
+    width: 250px;
+    padding: 20px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -428,4 +599,10 @@
   .ctaSubtitle {
     font-size: 13.5px;
   }
+  .testimonialCard {
+    width: 230px;
+    padding: 20px;
+  }
 }
+
+
