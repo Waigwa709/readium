@@ -160,9 +160,13 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 3. Narrative & Signature Quote Section */}
+        {/* 3. Narrative Section */}
         <section className={styles.storySection}>
           <div className={styles.storyGrid}>
+            <div className={styles.storyImageContainer}>
+              <img src="/about-narrative.png" alt="Tactile physical reading experience" className={styles.storyImage} />
+            </div>
+
             <div className={styles.storyBody}>
               <span className={styles.pretitle}>THE NARRATIVE</span>
               <h2>The Story of Readium</h2>
@@ -175,16 +179,10 @@ export default function AboutPage() {
               <p className={styles.paragraph}>
                 But purchasing every book leads to clutter, and public libraries are often out of stock. We decided to bridge this gap by building Readium: a premium, door-to-door book lending subscription that combines physical reading with digital on-demand ease.
               </p>
-            </div>
-
-            <div className={styles.quoteCard}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                We do not build shelves to collect dust. We create sharing circles that deliver the quiet minutes of uninterrupted focus, the tactile weight of paper in your hands, and the spark of new ideas that change how you build systems.
-              </p>
-              <div className={styles.quoteUser}>
-                <span className={styles.quoteAuthor}>Steve Kendrick</span>
-                <span className={styles.quoteRole}>Founder, Readium SaaS</span>
+              <div className={styles.storyAction}>
+                <Link href="/library" className="btn-gold">
+                  Browse Curated Catalog <span className={styles.storyArrow}>→</span>
+                </Link>
               </div>
             </div>
           </div>

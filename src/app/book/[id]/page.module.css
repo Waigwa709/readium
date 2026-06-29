@@ -278,6 +278,17 @@
     gap: 40px;
   }
   
+  .coverSection {
+    background: transparent;
+    border: none;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .coverShadowBg {
+    display: none;
+  }
+
   .title {
     font-size: 32px;
   }

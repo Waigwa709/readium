@@ -2,7 +2,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import booksData from '../../data/books.json';
 import { getAllBooks } from '@/lib/wordpress';
 import BookCard from '@/components/BookCard';
 import styles from './page.module.css';
@@ -17,8 +16,9 @@ function LibraryContent() {
   const [sortBy, setSortBy] = useState('recommended');
   // Local search query input state
   const [localQuery, setLocalQuery] = useState('');
-  const [booksList, setBooksList] = useState(booksData);
+  const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
 
   // Read URL search parameter q
   const searchQuery = searchParams.get('q') || '';
@@ -28,9 +28,7 @@ function LibraryContent() {
     async function loadBooks() {
       try {
         const data = await getAllBooks();
-        if (data && data.length > 0) {
-          setBooksList(data);
-        }
+        setBooksList(data || []);
       } catch (err) {
         console.error("Failed to load books from WordPress GraphQL:", err);
       } finally {
@@ -83,14 +81,13 @@ function LibraryContent() {
 
   // Sorting logic
   const sortedBooks = [...filteredBooks].sort((a, b) => {
-    if (sortBy === 'price-asc') {
-      return a.priceVal - b.priceVal;
+    if (sortBy === 'most-read') {
+      // Deterministic sort for most-read using character length of title + author
+      return (b.title.length + b.author.length) - (a.title.length + a.author.length);
     }
-    if (sortBy === 'price-desc') {
-      return b.priceVal - a.priceVal;
-    }
-    if (sortBy === 'rating') {
-      return b.rating - a.rating;
+    if (sortBy === 'best-sellers') {
+      // Deterministic sort for best-sellers using alphabetical order of titles
+      return a.title.localeCompare(b.title);
     }
     // Recommended / default sorting by rating and year
     return b.rating * 0.7 + (b.year / 2026) * 0.3 - (a.rating * 0.7 + (a.year / 2026) * 0.3);
@@ -159,6 +156,7 @@ function LibraryContent() {
       <div className={styles.layoutGrid}>
         {/* Left Sidebar Menu */}
         <aside className={styles.sidebar}>
+          {/* Desktop Category List */}
           <div className={styles.sidebarSection}>
             <h3 className={styles.sidebarTitle}>Genres & Tracks</h3>
             <ul className={styles.categoryList}>
@@ -179,6 +177,45 @@ function LibraryContent() {
             </ul>
           </div>
 
+          {/* Mobile Category Dropdown */}
+          <div className={styles.mobileCategoryDropdown}>
+            <button 
+              type="button"
+              className={styles.dropdownToggle}
+              onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+            >
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                {selectedCategory !== 'All' && getCategoryIcon(selectedCategory)}
+                {selectedCategory === 'All' ? 'All Categories' : getCategoryTitle(selectedCategory)}
+              </span>
+              <svg className={`${styles.dropdownArrow} ${isCategoryDropdownOpen ? styles.arrowRotate : ''}`} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            {isCategoryDropdownOpen && (
+              <ul className={styles.dropdownMenu}>
+                {categories.map(cat => (
+                  <li key={cat}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleCategorySelect(cat);
+                        setIsCategoryDropdownOpen(false);
+                      }}
+                      className={`${styles.dropdownItem} ${selectedCategory === cat ? styles.activeDropdownItem : ''}`}
+                    >
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                        {getCategoryIcon(cat)}
+                        {cat === 'All' ? 'All Categories' : getCategoryTitle(cat)}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Sidebar Banner (Desktop only) */}
           <div className={styles.sidebarBanner}>
             <h4>Lending  Plan</h4>
             <p>Borrow up to 5 books at a time with free door delivery and pickup.</p>
@@ -208,28 +245,25 @@ function LibraryContent() {
             <div className={styles.sortTabs}>
               <span className={styles.sortLabel}>Sort By:</span>
               <button
+                type="button"
                 onClick={() => setSortBy('recommended')}
                 className={`${styles.sortTabBtn} ${sortBy === 'recommended' ? styles.activeSortTab : ''}`}
               >
                 Recommended
               </button>
               <button
-                onClick={() => setSortBy('price-asc')}
-                className={`${styles.sortTabBtn} ${sortBy === 'price-asc' ? styles.activeSortTab : ''}`}
+                type="button"
+                onClick={() => setSortBy('most-read')}
+                className={`${styles.sortTabBtn} ${sortBy === 'most-read' ? styles.activeSortTab : ''}`}
               >
-                Price ↑
+                Most Read
               </button>
               <button
-                onClick={() => setSortBy('price-desc')}
-                className={`${styles.sortTabBtn} ${sortBy === 'price-desc' ? styles.activeSortTab : ''}`}
+                type="button"
+                onClick={() => setSortBy('best-sellers')}
+                className={`${styles.sortTabBtn} ${sortBy === 'best-sellers' ? styles.activeSortTab : ''}`}
               >
-                Price ↓
-              </button>
-              <button
-                onClick={() => setSortBy('rating')}
-                className={`${styles.sortTabBtn} ${sortBy === 'rating' ? styles.activeSortTab : ''}`}
-              >
-                Rating
+                Best Sellers
               </button>
             </div>
           </div>
@@ -240,7 +274,7 @@ function LibraryContent() {
               <div className={styles.filterBadges}>
                 {selectedCategory !== 'All' && (
                   <span className={styles.filterBadge}>
-                    Track: {selectedCategory}
+                    Track: {getCategoryTitle(selectedCategory)}
                     <button onClick={() => setSelectedCategory('All')}>✕</button>
                   </span>
                 )}
@@ -279,6 +313,15 @@ function LibraryContent() {
               </button>
             </div>
           )}
+
+          {/* Bottom Banner (Mobile only) */}
+          <div className={styles.bottomBanner}>
+            <h4>Lending Plan</h4>
+            <p>Borrow up to 5 books at a time with free door delivery and pickup.</p>
+            <Link href="/pricing" className="btn-gold" style={{ width: '100%', marginTop: '12px', padding: '8px' }}>
+              View Plans
+            </Link>
+          </div>
         </main>
       </div>
     </div>

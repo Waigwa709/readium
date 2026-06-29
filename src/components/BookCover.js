@@ -6,9 +6,9 @@ export default function BookCover({ title, author, category, gradient, accentCol
   const sizeClass = styles[size] || styles.medium;
 
   return (
-    <div className={styles.bookWrapper}>
+    <div className={`${styles.bookWrapper} ${sizeClass}`}>
       <div 
-        className={`${styles.book} ${sizeClass}`}
+        className={styles.book}
         style={{ 
           background: coverImage ? `url(${coverImage})` : (gradient || 'linear-gradient(135deg, #1A1A1D, #321E30)'),
           backgroundSize: 'cover',

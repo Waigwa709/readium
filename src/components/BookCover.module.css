@@ -6,6 +6,8 @@
 
 .book {
   position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
   border-radius: 4px 8px 8px 4px;
   box-shadow: 
     0 12px 28px rgba(0, 0, 0, 0.6),
@@ -28,17 +30,17 @@
 /* Sizes (Aspect Ratio 2:3) */
 .small {
   width: 120px;
-  height: 180px;
+  max-width: 100%;
 }
 
 .medium {
   width: 180px;
-  height: 270px;
+  max-width: 100%;
 }
 
 .large {
   width: 240px;
-  height: 360px;
+  max-width: 100%;
 }
 
 /* Spine Crease Shadow */

@@ -134,6 +134,110 @@
   line-height: 1.5;
 }
 
+.bottomBanner {
+  display: none;
+  background: var(--dark-gold-gradient);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: 16px;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  margin-top: 32px;
+}
+
+.bottomBanner h4 {
+  font-size: 15px;
+  font-family: var(--font-title);
+  color: var(--text-gold);
+  margin-bottom: 6px;
+}
+
+.bottomBanner p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Mobile Category Dropdown styles */
+.mobileCategoryDropdown {
+  display: none;
+  position: relative;
+  width: 100%;
+}
+
+.dropdownToggle {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdownToggle:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.dropdownArrow {
+  color: var(--text-gold);
+  transition: transform 0.3s ease;
+}
+
+.arrowRotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #13100e;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.dropdownItem {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+}
+
+.activeDropdownItem {
+  background: rgba(212, 175, 55, 0.09) !important;
+  color: var(--text-gold) !important;
+  font-weight: 700;
+}
+
 /* Right Panel Catalog Area */
 .catalogMain {
   display: flex;
@@ -335,6 +439,22 @@
   
   .sidebar {
     position: static;
+  }
+
+  .sidebarSection {
+    display: none;
+  }
+
+  .mobileCategoryDropdown {
+    display: block;
+  }
+
+  .sidebarBanner {
+    display: none;
+  }
+
+  .bottomBanner {
+    display: flex;
   }
 }
 

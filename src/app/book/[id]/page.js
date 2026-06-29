@@ -1,7 +1,6 @@
 'use client';
 import React, { use, useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
-import booksData from '../../../data/books.json';
 import { getAllBooks } from '@/lib/wordpress';
 import BookCover from '@/components/BookCover';
 import BookCard from '@/components/BookCard';
@@ -10,7 +9,7 @@ import styles from './page.module.css';
 export default function BookPage({ params }) {
   const { id } = use(params);
   const [shareUrl, setShareUrl] = useState('');
-  const [booksList, setBooksList] = useState(booksData);
+  const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(true);
   
   // Ref for the related books carousel track
@@ -24,9 +23,7 @@ export default function BookPage({ params }) {
     async function loadBooks() {
       try {
         const data = await getAllBooks();
-        if (data && data.length > 0) {
-          setBooksList(data);
-        }
+        setBooksList(data || []);
       } catch (err) {
         console.error("Failed to load books from WordPress GraphQL:", err);
       } finally {

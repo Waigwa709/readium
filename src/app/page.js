@@ -2,7 +2,6 @@
 import React, { useRef, useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import booksData from '../data/books.json';
 import { getAllBooks } from '@/lib/wordpress';
 import BookCard from '@/components/BookCard';
 import styles from './page.module.css';
@@ -34,16 +33,14 @@ function HomeContent() {
     return cat;
   };
 
-  const [booksList, setBooksList] = useState(booksData);
+  const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadBooks() {
       try {
         const data = await getAllBooks();
-        if (data && data.length > 0) {
-          setBooksList(data);
-        }
+        setBooksList(data || []);
       } catch (err) {
         console.error("Failed to load books from WordPress GraphQL:", err);
       } finally {

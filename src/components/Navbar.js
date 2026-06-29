@@ -11,11 +11,30 @@ function NavbarContent() {
 
   const [searchVal, setSearchVal] = useState('');
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // Sync state with URL parameter 'q'
   useEffect(() => {
     const query = searchParams.get('q') || '';
     setSearchVal(query);
   }, [searchParams]);
+
+  // Close menu when navigating
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Prevent scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   const handleSearchChange = (e) => {
     const val = e.target.value;
@@ -35,70 +54,107 @@ function NavbarContent() {
   };
 
   return (
-    <div className={`${styles.navContainer} container`}>
-      {/* Brand Logo */}
-      <Link href="/" className={styles.logo}>
-        <img src="/logo.jpg" alt="Readium Logo" className={styles.logoImg} />
-        <span className={styles.logoText}>READIUM</span>
-      </Link>
+    <header className={`${styles.header} ${isMenuOpen ? styles.headerOpen : ''}`}>
+      <div className={`${styles.navContainer} container`}>
+        {/* Brand Logo */}
+        <Link href="/" className={styles.logo}>
+          <img src="/logo.jpg" alt="Readium Logo" className={styles.logoImg} />
+          <span className={styles.logoText}>READIUM</span>
+        </Link>
 
-      {/* Center Navigation Menu */}
-      <nav className={styles.nav}>
-        <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}>
-          Home
-        </Link>
-        <Link href="/library" className={`${styles.navLink} ${pathname === '/library' ? styles.active : ''}`}>
-          Library
-        </Link>
-        <Link href="/pricing" className={`${styles.navLink} ${pathname === '/pricing' ? styles.active : ''}`}>
-          Membership Plans
-        </Link>
-        <Link href="/about" className={`${styles.navLink} ${pathname === '/about' ? styles.active : ''}`}>
-          About Us
-        </Link>
-      </nav>
+        {/* Center Navigation Menu (Desktop) */}
+        <nav className={styles.nav}>
+          <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}>
+            Home
+          </Link>
+          <Link href="/library" className={`${styles.navLink} ${pathname === '/library' ? styles.active : ''}`}>
+            Library
+          </Link>
+          <Link href="/pricing" className={`${styles.navLink} ${pathname === '/pricing' ? styles.active : ''}`}>
+            Membership Plans
+          </Link>
+          <Link href="/about" className={`${styles.navLink} ${pathname === '/about' ? styles.active : ''}`}>
+            About Us
+          </Link>
+        </nav>
 
-      {/* Header Search Bar (BooksRun Docked Design) */}
-      <div className={styles.searchContainer}>
-        <div className={styles.searchInputWrapper}>
-          <input
-            type="text"
-            placeholder="Search title, author..."
-            value={searchVal}
-            onChange={handleSearchChange}
-            className={styles.searchInput}
-          />
-          {searchVal && (
-            <button className={styles.searchClearBtn} onClick={handleClear}>
-              ✕
-            </button>
-          )}
+        {/* Header Search Bar (Desktop - BooksRun Docked Design) */}
+        <div className={styles.searchContainer}>
+          <div className={styles.searchInputWrapper}>
+            <input
+              type="text"
+              placeholder="Search title, author..."
+              value={searchVal}
+              onChange={handleSearchChange}
+              className={styles.searchInput}
+            />
+            {searchVal && (
+              <button className={styles.searchClearBtn} onClick={handleClear}>
+                ✕
+              </button>
+            )}
+          </div>
+          <button className={styles.searchBtn} aria-label="Search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </div>
-        <button className={styles.searchBtn} aria-label="Search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+
+        {/* Header CTA (Desktop) */}
+        <div className={styles.actions}>
+          <Link href="/pricing" className={styles.ctaButton}>
+            <span>Subscribe</span>
+            <span className={styles.ctaArrow}>→</span>
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button 
+          className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerActive : ''}`} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <span className={styles.hamburgerBar}></span>
+          <span className={styles.hamburgerBar}></span>
+          <span className={styles.hamburgerBar}></span>
         </button>
       </div>
 
-      {/* Redesigned Premium Subscribe CTA */}
-      <div className={styles.actions}>
-        <Link href="/pricing" className={styles.ctaButton}>
-          <span>Subscribe</span>
-          <span className={styles.ctaArrow}>→</span>
-        </Link>
+      {/* Mobile Drawer Overlay */}
+      <div className={`${styles.mobileDrawer} ${isMenuOpen ? styles.mobileDrawerOpen : ''}`}>
+        <nav className={styles.mobileNav}>
+          <Link href="/" className={`${styles.mobileNavLink} ${pathname === '/' ? styles.activeMobile : ''}`}>
+            Home
+          </Link>
+          <Link href="/library" className={`${styles.mobileNavLink} ${pathname === '/library' ? styles.activeMobile : ''}`}>
+            Library
+          </Link>
+          <Link href="/pricing" className={`${styles.mobileNavLink} ${pathname === '/pricing' ? styles.activeMobile : ''}`}>
+            Membership Plans
+          </Link>
+          <Link href="/about" className={`${styles.mobileNavLink} ${pathname === '/about' ? styles.activeMobile : ''}`}>
+            About Us
+          </Link>
+        </nav>
+
+        {/* Mobile CTA inside Drawer */}
+        <div className={styles.mobileActions}>
+          <Link href="/pricing" className={styles.ctaButton} style={{ width: '100%', justifyContent: 'center' }}>
+            <span>Subscribe</span>
+            <span className={styles.ctaArrow}>→</span>
+          </Link>
+        </div>
       </div>
-    </div>
+    </header>
   );
 }
 
 export default function Navbar() {
   return (
-    <header className={styles.header}>
-      <Suspense fallback={<div className="container" style={{ height: '72px' }}></div>}>
-        <NavbarContent />
-      </Suspense>
-    </header>
+    <Suspense fallback={<div className="container" style={{ height: '72px' }}></div>}>
+      <NavbarContent />
+    </Suspense>
   );
 }

@@ -81,8 +81,7 @@ export async function getAllBooks() {
       };
     });
   } catch (error) {
-    console.warn("WordPress connection failed. Falling back to local database. Reason:", error.message);
-    const localBooks = require('../data/books.json');
-    return localBooks;
+    console.error("WordPress GraphQL query failed. Reason:", error.message);
+    return [];
   }
 }
