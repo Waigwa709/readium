@@ -41,7 +41,7 @@ export async function GET() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query }),
-      next: { revalidate: 10 } // Cache results for 10 seconds
+      next: { revalidate: 300 } // Cache results for 5 minutes (300 seconds)
     });
 
     if (!res.ok) {

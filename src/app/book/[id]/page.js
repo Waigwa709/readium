@@ -101,7 +101,7 @@ export default function BookPage({ params }) {
         {/* Book Detail Split Grid */}
         <div className={styles.detailGrid}>
           {/* Left Column: Huge 3D Cover */}
-          <div className={styles.coverSection}>
+          <div className={`${styles.coverSection} slide-in-left delay-100`}>
             <div className={styles.coverShadowBg}></div>
             <BookCover 
               title={title}
@@ -115,7 +115,7 @@ export default function BookPage({ params }) {
           </div>
 
           {/* Right Column: Book details & CTA */}
-          <div className={styles.infoSection}>
+          <div className={`${styles.infoSection} slide-in-right delay-200`}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
               <div className={styles.categoryBadge} style={{ borderColor: `${accentColor}30`, color: accentColor, marginBottom: 0 }}>
                 {category}

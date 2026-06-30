@@ -148,7 +148,7 @@ export default function Footer() {
         {/* Bottom copyright line */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} Readium. All rights reserved. | Made with ❤ by{' '}
+            © {new Date().getFullYear()} Readium. All rights reserved. | Made with <span className={styles.heart}>❤</span> by{' '}
             <a href="https://elondesigns.com/" target="_blank" rel="noopener noreferrer" className={styles.creatorLink}>
               Elon Designs Limited
             </a>

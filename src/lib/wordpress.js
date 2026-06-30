@@ -5,7 +5,16 @@ const getFirstOrValue = (val) => {
   return val || '';
 };
 
+let cachedBooks = null;
+let cacheTimestamp = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache lifetime
+
 export async function getAllBooks() {
+  const now = Date.now();
+  if (cachedBooks && (now - cacheTimestamp < CACHE_DURATION)) {
+    return cachedBooks;
+  }
+
   try {
     const res = await fetch('/api/books');
     if (!res.ok) {
@@ -44,7 +53,7 @@ export async function getAllBooks() {
       };
     };
 
-    return data.books.nodes.map(node => {
+    const books = data.books.nodes.map(node => {
       const details = node.bookDetails || {};
       
       // Extract first value if array (handles ACF checkbox/multiselect values)
@@ -80,6 +89,10 @@ export async function getAllBooks() {
         borrowMessage: borrowMessage || ''
       };
     });
+
+    cachedBooks = books;
+    cacheTimestamp = Date.now();
+    return books;
   } catch (error) {
     console.error("WordPress GraphQL query failed. Reason:", error.message);
     return [];

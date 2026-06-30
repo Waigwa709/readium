@@ -8,7 +8,7 @@ export default function BookCard({ book }) {
   const { id, title, author, category, price, gradient, accentColor, coverImage, availability } = book;
 
   return (
-    <Link href={`/book/${id}`} className={styles.card}>
+    <Link href={`/book/${id}`} className={`${styles.card} reveal`}>
       <div className={styles.coverWrapper} style={{ position: 'relative' }}>
         {availability && (
           <span style={{

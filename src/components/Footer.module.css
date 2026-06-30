@@ -229,3 +229,9 @@
     grid-column: span 1;
   }
 }
+
+.heart {
+  color: #ff3366;
+  display: inline-block;
+  margin: 0 2px;
+}

@@ -145,15 +145,15 @@ function LibraryContent() {
 
   return (
     <div className="container" style={{ padding: '40px 24px 80px 24px' }}>
-      <div className={styles.libraryHeader}>
-        <span className={styles.pretitle}>EXPLORE OUR SHELVES</span>
-        <h1 className={styles.title}>The Readium Catalog</h1>
-        <p className={styles.subtitle}>
+      <div className={`${styles.libraryHeader} fade-up`}>
+        <span className={`${styles.pretitle} fade-up delay-100`}>EXPLORE OUR SHELVES</span>
+        <h1 className={`${styles.title} fade-up delay-100`}>The Readium Catalog</h1>
+        <p className={`${styles.subtitle} fade-up delay-200`}>
           Browse through {totalCount} physical volumes. Order directly via WhatsApp or start a membership subscription to borrow.
         </p>
       </div>
 
-      <div className={styles.layoutGrid}>
+      <div className={`${styles.layoutGrid} fade-up delay-300`}>
         {/* Left Sidebar Menu */}
         <aside className={styles.sidebar}>
           {/* Desktop Category List */}

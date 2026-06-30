@@ -91,17 +91,17 @@ function HomeContent() {
       {/* 1. Inspiration Hero Section (Redesigned with Premium CTAs) */}
       <section className={styles.heroSection}>
         <div className="container">
-          <div className={styles.heroWrapper}>
-            <h1 className={styles.heroTitle}>
+          <div className={`${styles.heroWrapper} fade-up`}>
+            <h1 className={`${styles.heroTitle} fade-up delay-100`}>
               Find your next read.<br />
               <span className={styles.heroTitleGold}>We'll bring it to your door.</span>
             </h1>
-            <p className={styles.heroSubtitle}>
+            <p className={`${styles.heroSubtitle} fade-up delay-200`}>
               Experience physical books with the convenience of a modern subscription. Browse our curation, request deliveries on-demand, and advance your reader status.
             </p>
 
             {/* Redesigned Primary & Secondary CTAs */}
-            <div className={styles.heroCtas}>
+            <div className={`${styles.heroCtas} fade-up delay-300`}>
               <Link href="/pricing" className="btn-gold" style={{ padding: '14px 32px', fontSize: '14px' }}>
                 Explore Membership Plans <span className={styles.ctaArrow}>→</span>
               </Link>
@@ -111,7 +111,7 @@ function HomeContent() {
             </div>
 
             {/* Quick Category Tag Filters */}
-            <div className={styles.categoryTagsRow}>
+            <div className={`${styles.categoryTagsRow} fade-up delay-400`}>
               {categories.slice(0, 4).map(cat => (
                 <button 
                   key={cat} 
@@ -173,7 +173,7 @@ function HomeContent() {
                 const catRef = getRef(cat);
 
                 return (
-                  <div key={cat} id={cat.toLowerCase().replace(/\s+/g, '-')} className={styles.categoryBlock}>
+                  <div key={cat} id={cat.toLowerCase().replace(/\s+/g, '-')} className={`${styles.categoryBlock} reveal`}>
                     <div className={styles.categoryHeader}>
                       <div className={styles.categoryTitleCol}>
                         <span className={styles.collectionLabel}>COLLECTION</span>
@@ -220,7 +220,7 @@ function HomeContent() {
       {/* 3. Redesigned Premium Subscription CTA Section */}
       <section className={styles.ctaSection}>
         <div className="container">
-          <div className={styles.ctaCard}>
+          <div className={`${styles.ctaCard} reveal-scale`}>
             <div className={styles.ctaGlow}></div>
             <div className={styles.ctaContent}>
               <span className={styles.ctaBadge}>ACTIVE SUBSCRIPTIONS OPEN</span>

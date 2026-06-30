@@ -130,44 +130,44 @@ export default function AboutPage() {
     <div className={styles.pageContainer}>
       
       {/* 1. Ambient Hero Header */}
-      <section className={styles.aboutHero}>
+      <section className={`${styles.aboutHero} fade-up`}>
         <div className="container">
-          <span className={styles.pretitle}>OUR MISSION & VISION</span>
-          <h1 className={styles.heroTitle}>Restoring the physical reading lifestyle.</h1>
-          <p className={styles.heroSubtitle}>
+          <span className={`${styles.pretitle} fade-up delay-100`}>OUR MISSION & VISION</span>
+          <h1 className={`${styles.heroTitle} fade-up delay-200`}>Restoring the physical reading lifestyle.</h1>
+          <p className={`${styles.heroSubtitle} fade-up delay-300`}>
             In a hyper-digital world of endless notifications, we believe the physical page is the ultimate anchor for focus, deep comprehension, and learning.
           </p>
         </div>
       </section>
-
+ 
       <div className="container">
         {/* 2. Interactive Statistics Row */}
         <section className={styles.statsGrid}>
-          <div className={styles.statCard}>
+          <div className={`${styles.statCard} reveal reveal-delay-100`}>
             <span className={styles.statNumber}>54</span>
             <span className={styles.statLabel}>Vetted Volumes</span>
             <span className={styles.statDesc}>No clutter. Only highly reviewed books across tech, business, and mindset.</span>
           </div>
-          <div className={styles.statCard}>
+          <div className={`${styles.statCard} reveal reveal-delay-200`}>
             <span className={styles.statNumber}>100%</span>
             <span className={styles.statLabel}>Tactile Quality</span>
             <span className={styles.statDesc}>Pristine books complete with premium bookmarks delivered to your hands.</span>
           </div>
-          <div className={styles.statCard}>
+          <div className={`${styles.statCard} reveal reveal-delay-300`}>
             <span className={styles.statNumber}>Seamless</span>
             <span className={styles.statLabel}>Doorstep Logistics</span>
             <span className={styles.statDesc}>Free local deliveries and on-demand pickups scheduled directly around your timing.</span>
           </div>
         </section>
-
+ 
         {/* 3. Narrative Section */}
         <section className={styles.storySection}>
           <div className={styles.storyGrid}>
-            <div className={styles.storyImageContainer}>
+            <div className={`${styles.storyImageContainer} reveal-left reveal-delay-100`}>
               <img src="/about-narrative.png" alt="Tactile physical reading experience" className={styles.storyImage} />
             </div>
-
-            <div className={styles.storyBody}>
+ 
+            <div className={`${styles.storyBody} reveal-right reveal-delay-200`}>
               <span className={styles.pretitle}>THE NARRATIVE</span>
               <h2>The Story of Readium</h2>
               <p className={styles.paragraph}>
@@ -187,18 +187,18 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
+ 
         {/* 4. Manifesto Grid Section */}
-        <section className={styles.manifestoSection}>
+        <section className={`${styles.manifestoSection} reveal`}>
           <span className={styles.pretitle}>THE MANIFESTO</span>
           <h2>Our Core Principles</h2>
           <p className={styles.sectionSubtitle}>
             Our principles guide how we curate, manage logistics, and build active reading communities.
           </p>
-
+ 
           <div className={styles.manifestoGrid}>
             {manifestoItems.map((item, index) => (
-              <div key={index} className={styles.manifestoCard}>
+              <div key={index} className={`${styles.manifestoCard} reveal reveal-delay-${(index + 1) * 100}`}>
                 <span className={styles.itemNumber}>{item.number}</span>
                 <div className={styles.manifestoContent}>
                   <h3>{item.title}</h3>
@@ -210,7 +210,7 @@ export default function AboutPage() {
         </section>
 
         {/* 4.5 Testimonials Section */}
-        <section className={styles.testimonialsSection}>
+        <section className={`${styles.testimonialsSection} reveal`}>
           <span className={styles.pretitle}>TESTIMONIALS</span>
           <h2>What Our Customers Say</h2>
           <p className={styles.sectionSubtitle}>
@@ -242,7 +242,7 @@ export default function AboutPage() {
 
         {/* 5. Bottom Call to Action */}
         <section className={styles.ctaSection}>
-          <div className={styles.ctaBanner}>
+          <div className={`${styles.ctaBanner} reveal-scale`}>
             <div className={styles.ctaGlow}></div>
             <div className={styles.ctaContent}>
               <h2>Ready to restore your focus?</h2>
