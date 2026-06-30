@@ -33,6 +33,43 @@ function HomeContent() {
     return cat;
   };
 
+  const getCategoryIcon = (name) => {
+    const clean = (name || '').toLowerCase();
+    if (clean.includes('tech') || clean.includes('system')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+      );
+    }
+    if (clean.includes('biz') || clean.includes('wealth') || clean.includes('busin')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+      );
+    }
+    if (clean.includes('mind') || clean.includes('growth') || clean.includes('person')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+      );
+    }
+    return (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+    );
+  };
+
   const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -109,21 +146,36 @@ function HomeContent() {
                 Browse Book Catalog
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Quick Category Tag Filters */}
-            <div className={`${styles.categoryTagsRow} fade-up delay-400`}>
-              {categories.slice(0, 4).map(cat => (
-                <button 
-                  key={cat} 
-                  onClick={() => { 
-                    clearSearch(); 
-                    setTimeout(() => scrollToAnchor(cat.toLowerCase().replace(/\s+/g, '-')), 100); 
-                  }} 
-                  className={styles.tagBtn}
-                >
-                  {cat} Track
-                </button>
-              ))}
+      {/* Categories Horizontal Slider Section */}
+      <section className={styles.categorySliderSection}>
+        <div className="container">
+          <div className={styles.categorySliderHeader}>
+            <span className={styles.categorySliderLabel}>CURATED LEARNING PATHWAYS</span>
+            <h2 className={styles.categorySliderTitle}>Explore by Genre & Track</h2>
+          </div>
+          <div className={styles.sliderWrapper}>
+            <div className={styles.sliderTrack}>
+              {categories.map((cat, index) => {
+                const count = booksList.filter(b => b.categories ? b.categories.includes(cat) : b.category === cat).length;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => scrollToAnchor(cat.toLowerCase().replace(/\s+/g, '-'))}
+                    className={`${styles.categoryCard} reveal reveal-delay-${(index % 4 + 1) * 100}`}
+                  >
+                    <div className={styles.categoryCardGlow}></div>
+                    <div className={styles.categoryCardIcon}>
+                      {getCategoryIcon(cat)}
+                    </div>
+                    <h3 className={styles.categoryCardName}>{cat}</h3>
+                    <span className={styles.categoryCardCount}>{count} Volume{count !== 1 ? 's' : ''}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

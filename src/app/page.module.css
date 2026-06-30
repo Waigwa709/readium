@@ -417,6 +417,141 @@
 
 }
 
+/* Category Slider Section */
+.categorySliderSection {
+  padding: 60px 0 20px 0;
+  background: var(--bg-base);
+  position: relative;
+}
+
+.categorySliderHeader {
+  margin-bottom: 28px;
+}
+
+.categorySliderLabel {
+  font-size: 11px;
+  font-family: var(--font-title);
+  color: var(--text-gold);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.categorySliderTitle {
+  font-size: 28px;
+  color: var(--text-main);
+  margin-top: 6px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.sliderWrapper {
+  overflow-x: auto;
+  padding: 10px 4px 24px 4px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sliderWrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.sliderWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sliderWrapper::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.15);
+  border-radius: 3px;
+}
+.sliderWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold);
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+}
+
+.categoryCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 12px;
+  width: 130px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.categoryCardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.categoryCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-sm), 0 0 12px rgba(212, 175, 55, 0.04);
+}
+
+.categoryCard:hover .categoryCardGlow {
+  opacity: 1;
+}
+
+.categoryCardIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-gold);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.categoryCardIcon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.categoryCard:hover .categoryCardIcon {
+  background: rgba(212, 175, 55, 0.12);
+  transform: scale(1.03);
+}
+
+.categoryCardName {
+  font-size: 11.5px;
+  font-family: var(--font-title);
+  color: var(--text-main);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.categoryCardCount {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .ctaCard {
     flex-direction: column;

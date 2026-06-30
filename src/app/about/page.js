@@ -128,7 +128,7 @@ export default function AboutPage() {
 
   return (
     <div className={styles.pageContainer}>
-      
+
       {/* 1. Ambient Hero Header */}
       <section className={`${styles.aboutHero} fade-up`}>
         <div className="container">
@@ -139,7 +139,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
- 
+
       <div className="container">
         {/* 2. Interactive Statistics Row */}
         <section className={styles.statsGrid}>
@@ -159,22 +159,19 @@ export default function AboutPage() {
             <span className={styles.statDesc}>Free local deliveries and on-demand pickups scheduled directly around your timing.</span>
           </div>
         </section>
- 
+
         {/* 3. Narrative Section */}
         <section className={styles.storySection}>
           <div className={styles.storyGrid}>
             <div className={`${styles.storyImageContainer} reveal-left reveal-delay-100`}>
-              <img src="/about-narrative.png" alt="Tactile physical reading experience" className={styles.storyImage} />
+              <img src="/Readium-about-page-Image.webp" alt="Tactile physical reading experience" className={styles.storyImage} />
             </div>
- 
+
             <div className={`${styles.storyBody} reveal-right reveal-delay-200`}>
               <span className={styles.pretitle}>THE NARRATIVE</span>
               <h2>The Story of Readium</h2>
               <p className={styles.paragraph}>
-                Readium was born out of a simple observation: while e-readers and digital audiobooks offer convenience, they lack the tactile connection, focus, and permanence of physical books. 
-              </p>
-              <p className={styles.paragraph}>
-                The smell of ink, the texture of paper, the satisfying weight in your hand, and the progressive turn of pages are critical cues that help our brains slow down, focus, and retain knowledge.
+                Readium was born out of a simple observation: while e-readers and digital audiobooks offer convenience, they lack the tactile connection, focus, and permanence of physical books. The smell of ink, the texture of paper, the satisfying weight in your hand, and the progressive turn of pages are critical cues that help our brains slow down, focus, and retain knowledge.
               </p>
               <p className={styles.paragraph}>
                 But purchasing every book leads to clutter, and public libraries are often out of stock. We decided to bridge this gap by building Readium: a premium, door-to-door book lending subscription that combines physical reading with digital on-demand ease.
@@ -187,7 +184,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
- 
+
         {/* 4. Manifesto Grid Section */}
         <section className={`${styles.manifestoSection} reveal`}>
           <span className={styles.pretitle}>THE MANIFESTO</span>
@@ -195,7 +192,7 @@ export default function AboutPage() {
           <p className={styles.sectionSubtitle}>
             Our principles guide how we curate, manage logistics, and build active reading communities.
           </p>
- 
+
           <div className={styles.manifestoGrid}>
             {manifestoItems.map((item, index) => (
               <div key={index} className={`${styles.manifestoCard} reveal reveal-delay-${(index + 1) * 100}`}>

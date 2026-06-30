@@ -161,10 +161,6 @@ export default function BookPage({ params }) {
                 {renderStars(rating)}
               </div>
               <span className={styles.ratingVal}>{rating} Rating</span>
-              <span className={styles.dot}>•</span>
-              <span className={styles.pages}>{pages} pages</span>
-              <span className={styles.dot}>•</span>
-              <span className={styles.year}>Published {year}</span>
             </div>
 
             <div className={styles.divider}></div>
