@@ -1,13 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || process.env.NEXT_PUBLIC_WORDPRESS_API_URL || '';
-
-  if (!WORDPRESS_API_URL) {
-    return NextResponse.json({ 
-      error: 'WORDPRESS_API_URL is not configured in environment variables.' 
-    }, { status: 404 });
-  }
+  const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://skillflowhospitality.com/graphql';
 
   try {
     const query = `
