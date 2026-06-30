@@ -68,6 +68,13 @@
   flex-wrap: wrap;
 }
 
+.heroCtas a {
+  width: 260px;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 /* Search Bar Wrapper */
 .searchBarWrapper {
   position: relative;
@@ -599,7 +606,19 @@
   .ctaSubtitle {
     font-size: 13.5px;
   }
-
+  .heroCtas {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+    gap: 12px;
+  }
+  .heroCtas a {
+    width: 100% !important;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+  }
 }
 
 
