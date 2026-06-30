@@ -10,8 +10,8 @@ function NavbarContent() {
   const searchParams = useSearchParams();
 
   const [searchVal, setSearchVal] = useState('');
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Sync state with URL parameter 'q'
   useEffect(() => {
@@ -36,6 +36,19 @@ function NavbarContent() {
     };
   }, [isMenuOpen]);
 
+  // Scroll listener to hide search bar below logo on mobile scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleSearchChange = (e) => {
     const val = e.target.value;
     setSearchVal(val);
@@ -54,7 +67,7 @@ function NavbarContent() {
   };
 
   return (
-    <header className={`${styles.header} ${isMenuOpen ? styles.headerOpen : ''}`}>
+    <header className={styles.header}>
       <div className={`${styles.navContainer} container`}>
         {/* Brand Logo */}
         <Link href="/" className={styles.logo}>
@@ -110,20 +123,55 @@ function NavbarContent() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <button 
-          className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerActive : ''}`} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          <span className={styles.hamburgerBar}></span>
-          <span className={styles.hamburgerBar}></span>
-          <span className={styles.hamburgerBar}></span>
-        </button>
+        {/* Mobile Right Actions (Hamburger) */}
+        <div className={styles.mobileRightContainer}>
+          <button 
+            className={styles.hamburger} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <span className={styles.hamburgerBar}></span>
+            <span className={styles.hamburgerBar}></span>
+            <span className={styles.hamburgerBar}></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Search Bar (Sits below Logo & Nav, disappears on scroll) */}
+      <div className={`${styles.mobileSearchWrapper} ${isScrolled ? styles.mobileSearchHidden : ''}`}>
+        <div className={styles.mobileSearchInner}>
+          <input
+            type="text"
+            placeholder="Search title, author..."
+            value={searchVal}
+            onChange={handleSearchChange}
+            className={styles.mobileSearchInput}
+          />
+          {searchVal && (
+            <button className={styles.mobileSearchClearBtn} onClick={handleClear}>
+              ✕
+            </button>
+          )}
+          <button className={styles.mobileSearchBtn} aria-label="Search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Overlay */}
       <div className={`${styles.mobileDrawer} ${isMenuOpen ? styles.mobileDrawerOpen : ''}`}>
+        {/* Close Button inside Drawer */}
+        <button 
+          className={styles.drawerCloseBtn} 
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close Menu"
+        >
+          ✕
+        </button>
+
         <nav className={styles.mobileNav}>
           <Link href="/" className={`${styles.mobileNavLink} ${pathname === '/' ? styles.activeMobile : ''}`}>
             Home
