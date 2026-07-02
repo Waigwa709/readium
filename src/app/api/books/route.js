@@ -16,7 +16,6 @@ export async function GET() {
               availability
               bookCategory
               bookDescription
-              borrowMessage
               bookCover {
                 node {
                   sourceUrl
@@ -39,8 +38,8 @@ export async function GET() {
     });
 
     if (!res.ok) {
-      return NextResponse.json({ 
-        error: `WordPress responded with HTTP status ${res.status}` 
+      return NextResponse.json({
+        error: `WordPress responded with HTTP status ${res.status}`
       }, { status: res.status });
     }
 
