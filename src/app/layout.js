@@ -6,6 +6,9 @@ import ScrollRevealObserver from "@/components/ScrollRevealObserver";
 export const metadata = {
   title: "Readium | Premium Physical Book Lending SaaS",
   description: "Experience physical books with digital SaaS convenience. Personalized plans, collectible bookmarks, and reading challenge rewards.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export const viewport = {
