@@ -52,7 +52,7 @@ export default function BookPage({ params }) {
 
   // Build WhatsApp Buy URL
   const phone = '254708951796'; // Target phone number (customizable placeholder)
-  const buyMessage = `Hi Readium! I would like to buy a copy of the physical book "${title}" by ${author} for ${price}. Product link: ${shareUrl}`;
+  const buyMessage = `Hi Readium! I would like to buy a copy of the physical book "${title}" by ${author}. Product link: ${shareUrl}`;
   const whatsappBuyUrl = `https://wa.me/${phone}?text=${encodeURIComponent(buyMessage)}`;
 
   // Generate stars
